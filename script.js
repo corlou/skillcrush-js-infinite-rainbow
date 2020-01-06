@@ -1,4 +1,4 @@
-var renderer = i2d.SVGLayer('#Mycanvas', {
+var renderer_ = i2d.SVGLayer('#Mycanvas', {
     events: false,
     selectiveClear: false
 });
@@ -9,14 +9,13 @@ var radius = 100
 var g = renderer_.createEl({
     el: 'group',
     attr: {
-        tansform: {
-            translate: [renderer_.width / 2,
-            renderer_.height / 2]
+        transform: {
+            translate: [renderer_.width / 2, renderer_.height / 2]
         }
     }
 })
 
-g.createEls((new Array(circlesCount)).fill().fill.map(function (d, i) {
+g.createEls((new Array(circlesCount)).fill().map(function (d, i) {
     return i
 }), {
     el: 'circle',
@@ -31,6 +30,8 @@ g.createEls((new Array(circlesCount)).fill().fill.map(function (d, i) {
         }
     }
 })
+    .exec(animateEachCircle)
+
 function animateEachCircle(d) {
     parallelChain.add(this.animateExe({
         duration: 2000,
